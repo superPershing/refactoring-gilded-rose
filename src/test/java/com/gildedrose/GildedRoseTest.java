@@ -15,7 +15,7 @@ public class GildedRoseTest {
         app.update_quality();
         assertEquals("foo", app.getItems()[0].getName());
         assertThat(app.getItems()[0].getQuality(), is(4));
-        assertThat(app.getItems()[0].getSell_in(), is(0));
+        assertThat(app.getItems()[0].getSellIn(), is(0));
     }
 
 }

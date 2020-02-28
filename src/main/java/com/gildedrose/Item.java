@@ -4,13 +4,13 @@ public class Item {
 
     private String name;
 
-    private int sell_in;
+    private int sellIn;
 
     private int quality;
 
-    public Item(String name, int sell_in, int quality) {
+    public Item(String name, int sellIn, int quality) {
         this.name = name;
-        this.sell_in = sell_in;
+        this.sellIn = sellIn;
         this.quality = quality;
     }
 
@@ -18,12 +18,12 @@ public class Item {
         return name;
     }
 
-    public int getSell_in() {
-        return sell_in;
+    public int getSellIn() {
+        return sellIn;
     }
 
-    public void setSell_in(int sell_in) {
-        this.sell_in = sell_in;
+    public void setSellIn(int sellIn) {
+        this.sellIn = sellIn;
     }
 
     public int getQuality() {
@@ -36,6 +36,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return this.name + ", " + this.sell_in + ", " + this.quality;
+        return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 }
