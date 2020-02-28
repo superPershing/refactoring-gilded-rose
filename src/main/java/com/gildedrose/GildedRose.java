@@ -11,7 +11,7 @@ public class GildedRose {
         return items;
     }
 
-    public void update_quality() {
+    public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             if (!items[i].getName().equals("Aged Brie")
                     && !items[i].getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
