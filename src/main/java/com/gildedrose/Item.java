@@ -46,6 +46,10 @@ public class Item {
                 Objects.equals(name, item.name);
     }
 
+    public boolean isNameEqualTo(String itemName) {
+        return Objects.equals(name, itemName);
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, sellIn, quality);
