@@ -7,10 +7,6 @@ public class GildedRose {
         this.items = items;
     }
 
-    public Item[] getItems() {
-        return items;
-    }
-
     public void updateQuality() {
         for (Item item : items) {
             if (!item.getName().equals("Aged Brie")
