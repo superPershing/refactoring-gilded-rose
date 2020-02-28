@@ -24,16 +24,24 @@ public class Item {
         return sellIn;
     }
 
-    public void setSellIn(int sellIn) {
-        this.sellIn = sellIn;
-    }
-
     public int getQuality() {
         return quality;
     }
 
     public void setQuality(int quality) {
         this.quality = quality;
+    }
+
+    public void minusSellIn() {
+        this.sellIn--;
+    }
+
+    public void plusQuality() {
+        this.quality++;
+    }
+
+    public void minusQuality() {
+        this.quality--;
     }
 
     @Override

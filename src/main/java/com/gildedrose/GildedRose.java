@@ -28,27 +28,27 @@ public class GildedRose {
     private void stage1(Item item) {
         if (!item.isNameEqualTo(AGED_BRIE) && !item.isNameEqualTo(BACKSTAGE)
                 && item.getQuality() > 0 && !item.isNameEqualTo(SULFURAS)) {
-            item.setQuality(item.getQuality() - 1);
+            item.minusQuality();
             return;
         }
         if (item.getQuality() >= 50) {
             return;
         }
 
-        item.setQuality(item.getQuality() + 1);
+        item.plusQuality();
 
         if (item.isNameEqualTo(BACKSTAGE) && item.getSellIn() < 11 && item.getQuality() < 50) {
-            item.setQuality(item.getQuality() + 1);
+            item.plusQuality();
         }
 
         if (item.isNameEqualTo(BACKSTAGE) && item.getSellIn() < 6 && item.getQuality() < 50) {
-            item.setQuality(item.getQuality() + 1);
+            item.plusQuality();
         }
     }
 
     private void stage2(Item item) {
         if (!item.isNameEqualTo(SULFURAS)) {
-            item.setSellIn(item.getSellIn() - 1);
+            item.minusSellIn();
         }
     }
 
@@ -66,12 +66,12 @@ public class GildedRose {
         }
 
         if (item.isNameEqualTo(AGED_BRIE) && item.getQuality() < 50) {
-            item.setQuality(item.getQuality() + 1);
+            item.plusQuality();
             return;
         }
 
         if (item.getQuality() > 0 && !item.isNameEqualTo(SULFURAS)) {
-            item.setQuality(item.getQuality() - 1);
+            item.minusQuality();
         }
 
     }
