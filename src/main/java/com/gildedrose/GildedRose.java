@@ -18,17 +18,30 @@ public class GildedRose {
     }
 
     private void updateSingleItemQuality(Item item) {
-        if (!item.isNameEqualTo(AGED_BRIE) && !item.isNameEqualTo(BACKSTAGE)
+        if (item.isNameEqualTo(BACKSTAGE)) {
+            if (item.getQuality() < 50) {
+                item.plusQuality();
+                if (item.getSellIn() < 11 && item.getQuality() < 50) {
+                    item.plusQuality();
+                }
+                if (item.getSellIn() < 6 && item.getQuality() < 50) {
+                    item.plusQuality();
+                }
+            }
+            item.minusSellIn();
+
+            if (item.getSellIn() >= 0) {
+                return;
+            }
+            item.setQuality(0);
+            return;
+        }
+
+        if (!item.isNameEqualTo(AGED_BRIE)
                 && item.getQuality() > 0 && !item.isNameEqualTo(SULFURAS)) {
             item.minusQuality();
         } else if (item.getQuality() < 50) {
             item.plusQuality();
-            if (item.isNameEqualTo(BACKSTAGE) && item.getSellIn() < 11 && item.getQuality() < 50) {
-                item.plusQuality();
-            }
-            if (item.isNameEqualTo(BACKSTAGE) && item.getSellIn() < 6 && item.getQuality() < 50) {
-                item.plusQuality();
-            }
         }
 
         if (!item.isNameEqualTo(SULFURAS)) {
@@ -36,10 +49,6 @@ public class GildedRose {
         }
 
         if (item.getSellIn() >= 0) {
-            return;
-        }
-        if (item.isNameEqualTo(BACKSTAGE)) {
-            item.setQuality(0);
             return;
         }
 
