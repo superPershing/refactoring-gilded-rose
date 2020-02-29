@@ -19,46 +19,25 @@ public class GildedRose {
 
     private void updateSingleItemQuality(Item item) {
         if (item.isNameEqualTo(BACKSTAGE)) {
-            if (item.getQuality() < 50) {
-                item.plusQuality();
-                if (item.getSellIn() < 11 && item.getQuality() < 50) {
-                    item.plusQuality();
-                }
-                if (item.getSellIn() < 6 && item.getQuality() < 50) {
-                    item.plusQuality();
-                }
-            }
-            item.minusSellIn();
-
-            if (item.getSellIn() >= 0) {
-                return;
-            }
-            item.setQuality(0);
+            backstageStrategy(item);
             return;
         }
 
         if (item.isNameEqualTo(AGED_BRIE)) {
-            if (item.getQuality() < 50) {
-                item.plusQuality();
-            }
-            item.minusSellIn();
-            if (item.getSellIn() >= 0) {
-                return;
-            }
-
-            if (item.getQuality() < 50) {
-                item.plusQuality();
-            }
+            agedBridStrategy(item);
             return;
         }
 
         if (item.isNameEqualTo(SULFURAS)) {
-            if (item.getQuality() < 50) {
-                item.plusQuality();
-            }
+            sulfuasStrategy(item);
             return;
         }
 
+        commonItemStrategy(item);
+
+    }
+
+    private void commonItemStrategy(Item item) {
         if (item.getQuality() > 0) {
             item.minusQuality();
         } else if (item.getQuality() < 50) {
@@ -74,7 +53,44 @@ public class GildedRose {
         if (item.getQuality() > 0) {
             item.minusQuality();
         }
+    }
 
+    private void sulfuasStrategy(Item item) {
+        if (item.getQuality() < 50) {
+            item.plusQuality();
+        }
+    }
+
+    private void agedBridStrategy(Item item) {
+        if (item.getQuality() < 50) {
+            item.plusQuality();
+        }
+        item.minusSellIn();
+        if (item.getSellIn() >= 0) {
+            return;
+        }
+
+        if (item.getQuality() < 50) {
+            item.plusQuality();
+        }
+    }
+
+    private void backstageStrategy(Item item) {
+        if (item.getQuality() < 50) {
+            item.plusQuality();
+            if (item.getSellIn() < 11 && item.getQuality() < 50) {
+                item.plusQuality();
+            }
+            if (item.getSellIn() < 6 && item.getQuality() < 50) {
+                item.plusQuality();
+            }
+        }
+        item.minusSellIn();
+
+        if (item.getSellIn() >= 0) {
+            return;
+        }
+        item.setQuality(0);
     }
 
 }
