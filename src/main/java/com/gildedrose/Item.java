@@ -9,11 +9,22 @@ public class Item {
     private int sellIn;
 
     private int quality;
+    private Strategy strategy;
 
     public Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+        strategy = new CommonItemStrategy();
+        if (name.equals("Aged Brie")) {
+            strategy = new AgedBrieStrategy();
+        }
+        if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            strategy = new BackstageStrategy();
+        }
+        if (name.equals("Sulfuras, Hand of Ragnaros")) {
+            strategy = new SulfurasStrategy();
+        }
     }
 
     public String getName() {
@@ -54,10 +65,6 @@ public class Item {
                 Objects.equals(name, item.name);
     }
 
-    public boolean isNameEqualTo(String itemName) {
-        return Objects.equals(name, itemName);
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(name, sellIn, quality);
@@ -66,5 +73,9 @@ public class Item {
     @Override
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
+    }
+
+    public void update() {
+        strategy.update(this);
     }
 }
