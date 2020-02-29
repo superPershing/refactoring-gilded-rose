@@ -46,19 +46,15 @@ public class GildedRose {
                 return;
             }
 
-            if (item.getQuality() >= 50) {
-                return;
+            if (item.getQuality() < 50) {
+                item.plusQuality();
             }
-            item.plusQuality();
             return;
         }
 
         if (item.isNameEqualTo(SULFURAS)) {
             if (item.getQuality() < 50) {
                 item.plusQuality();
-            }
-            if (item.getSellIn() >= 0) {
-                return;
             }
             return;
         }
