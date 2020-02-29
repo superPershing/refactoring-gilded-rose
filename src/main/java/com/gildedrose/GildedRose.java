@@ -53,21 +53,29 @@ public class GildedRose {
             return;
         }
 
-        if (item.getQuality() > 0 && !item.isNameEqualTo(SULFURAS)) {
+        if (item.isNameEqualTo(SULFURAS)) {
+            if (item.getQuality() < 50) {
+                item.plusQuality();
+            }
+            if (item.getSellIn() >= 0) {
+                return;
+            }
+            return;
+        }
+
+        if (item.getQuality() > 0) {
             item.minusQuality();
         } else if (item.getQuality() < 50) {
             item.plusQuality();
         }
 
-        if (!item.isNameEqualTo(SULFURAS)) {
-            item.minusSellIn();
-        }
+        item.minusSellIn();
 
         if (item.getSellIn() >= 0) {
             return;
         }
 
-        if (item.getQuality() > 0 && !item.isNameEqualTo(SULFURAS)) {
+        if (item.getQuality() > 0) {
             item.minusQuality();
         }
 
