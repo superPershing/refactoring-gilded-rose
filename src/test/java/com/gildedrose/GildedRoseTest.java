@@ -3,7 +3,7 @@ package com.gildedrose;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.gildedrose.Item.createItem;
+import static com.gildedrose.ItemFactory.createItem;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
