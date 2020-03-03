@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class ItemFactory {
     public static Item createItem(String name, int sellIn, int quality) {
-        ItemName itemName = ItemName.forName(name);
+        ItemName itemName = ItemName.fromName(name);
         if (itemName == null) {
             return new Item(name, sellIn, quality, new CommonItemStrategy());
         }
@@ -32,10 +32,10 @@ public class ItemFactory {
         BACKSTAGE("Backstage passes to a TAFKAL80ETC concert"),
         SULFURAS("Sulfuras, Hand of Ragnaros");
 
-        private static HashMap<String, ItemName> strategyEnumMap = new HashMap<>();
+        private static HashMap<String, ItemName> hashMap = new HashMap<>();
 
         static {
-            Arrays.stream(ItemName.values()).forEach(i -> strategyEnumMap.put(i.name, i));
+            Arrays.stream(ItemName.values()).forEach(i -> hashMap.put(i.name, i));
         }
 
         String name;
@@ -44,8 +44,8 @@ public class ItemFactory {
             this.name = name;
         }
 
-        public static ItemName forName(String name) {
-            return strategyEnumMap.get(name);
+        public static ItemName fromName(String name) {
+            return hashMap.get(name);
         }
     }
 }
